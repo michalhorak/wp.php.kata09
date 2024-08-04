@@ -16,7 +16,7 @@ interface ICheckOut {
     public static function new(Array $rules): ICheckOut;
 
     /**
-     * Scans the new item into the basket and adds its price to the total
+     * Scans the new item into the basket
      *
      * @param string $itemName
      * @return void
