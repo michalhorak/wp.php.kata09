@@ -53,6 +53,7 @@ class CheckOutTest extends TestCase
         $co->scan("A");  self::assertEquals(130, $co->total);
         $co->scan("A");  self::assertEquals(160, $co->total);
         $co->scan("B");  self::assertEquals(175, $co->total);
-
+        self::assertEquals(null, $co->total1);
+        self::assertEquals(null, $co->total2);
     }
 }
