@@ -12,9 +12,6 @@ jobs:
       - uses: php-actions/composer@v6
       - run: echo "Composer dependencies have been installed"
       - run: vendor/bin/phpunit
-      - uses: php-actions/phpunit@master
         with:
-          version: 11.3
-          php_version: 8.3
           configuration: phpunit.xml
           args: --coverage-text
