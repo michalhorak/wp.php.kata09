@@ -55,7 +55,10 @@ class CheckOut implements ICheckOut
     }
 
     /**
-     * @inheritDoc
+     * Constructs new {@link CheckOut} with given pricing rules
+     *
+     * @param array<string,int|float|array{0: int|float, 1: string}> $rules
+     * @return CheckOut
      *
      * @example
      * // unit price 20 for 'C'
@@ -67,8 +70,16 @@ class CheckOut implements ICheckOut
      * Checkout::new([
      *     "C" => [20, "17 for 15"]
      * ])
+     *
+     * // more complex price-list
+     * const RULES = [
+     *  "A" => [50, "3 for 130"],
+     *  "B" => [30, "2 for 45"],
+     *  "C" => 20,
+     *  "D" => 15
+     * ];
      */
-    public static function new(array $rules): ICheckOut
+    public static function new(array $rules): CheckOut
     {
         $list = new PriceList();
         foreach ($rules as $ruleName => $ruleValue) {
