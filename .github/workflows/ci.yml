@@ -15,6 +15,7 @@ jobs:
         with:
           command: check-platform-reqs
       - run: echo "Platform requirements have been checked"
+      - uses: php-actions/phpstan@v3
       - run: vendor/bin/phpunit --coverage-text
         env:
           XDEBUG_MODE: coverage

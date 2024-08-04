@@ -15,10 +15,17 @@ class BasketItem {
 
     }
 
-    final public function getQuantity(): string {
+    /**
+     * @return int
+     */
+    final public function getQuantity(): int {
         return $this->quantity;
     }
 
+    /**
+     * @param int $quantity
+     * @return void
+     */
     final public function raiseQuantity(int $quantity): void {
         $this->quantity += $quantity;
     }

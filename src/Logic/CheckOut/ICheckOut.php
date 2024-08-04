@@ -10,7 +10,7 @@ interface ICheckOut {
     /**
      * Constructs new {@link ICheckOut} with given pricing rules
      *
-     * @param array $rules
+     * @param array<string,int|float|array{0: int|float, 1: string}> $rules
      * @return ICheckOut
      */
     public static function new(Array $rules): ICheckOut;

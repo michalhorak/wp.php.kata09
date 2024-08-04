@@ -8,20 +8,38 @@ use App\Model\PriceList;
 use App\Model\SpecialPriceItem;
 use App\Model\UnitPriceItem;
 
+/**
+ * Checkout logic
+ */
 class CheckOut implements ICheckOut
 {
+    /**
+     * @var Basket
+     */
     private Basket $basket;
 
+    /**
+     * @param PriceList $priceList
+     */
     private function __construct(public readonly PriceList $priceList)
     {
         $this->basket = new Basket();
     }
 
+    /**
+     * Price of all items in basket
+     *
+     * @return float
+     */
     private function basketPrice(): float
     {
         return $this->basket->totalPrice($this->priceList);
     }
 
+    /**
+     * @param string $propertyName
+     * @return mixed
+     */
     public function __get(string $propertyName): mixed
     {
         if ("total" === $propertyName) {

@@ -2,6 +2,9 @@
 
 namespace App\Model;
 
+/**
+ * Shopping basket
+ */
 class Basket {
 
     /**
@@ -9,6 +12,10 @@ class Basket {
      */
     public array $items = [];
 
+    /**
+     * @param PriceList $priceList
+     * @return float
+     */
     final public function totalPrice(PriceList $priceList): float
     {
         $price = 0;
@@ -18,11 +25,20 @@ class Basket {
         return round($price, 2);
     }
 
+    /**
+     * @param BasketItem $item
+     * @return void
+     */
     final public function setItem(BasketItem $item): void
     {
         $this->items[$item->name] = $item;
     }
 
+    /**
+     * @param string $name
+     * @param int $quantity
+     * @return void
+     */
     final public function raiseItemQuantity(string $name, int $quantity): void
     {
         if (!array_key_exists($name, $this->items)) {
@@ -32,6 +48,10 @@ class Basket {
         }
     }
 
+    /**
+     * @param BasketItem $item
+     * @return void
+     */
     final public function removeItem(BasketItem $item): void
     {
         if (array_key_exists($item->name, $this->items)) {

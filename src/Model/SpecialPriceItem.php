@@ -3,7 +3,7 @@
 namespace App\Model;
 
 /**
- *
+ * Price with quantity discount
  */
 class SpecialPriceItem {
     /**

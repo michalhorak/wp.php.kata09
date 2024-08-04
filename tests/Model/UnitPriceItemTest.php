@@ -14,6 +14,6 @@ class UnitPriceItemTest extends TestCase {
         $this->expectException(\Error::class);
         $item->name = "B";
         $this->expectException(\Error::class);
-        $item->quantity = 105;
+        $item->price = 105;
     }
 }
