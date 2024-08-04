@@ -7,3 +7,6 @@ composer.phar
 
 # Idea
 .idea
+
+# PHPUnit
+.phpunit.cache
