@@ -8,6 +8,10 @@ namespace App\Model;
 class PriceItem {
 
     /**
+     * Discounted prices
+     *
+     * 0 or more quantity discounts. In case of more than 1 quantity discount, the price with the highest quantity threshold is used
+     *
      * @var SpecialPriceItem[]
      */
     public array $specialPrices = [];
@@ -20,6 +24,10 @@ class PriceItem {
     }
 
     /**
+     * Adds quantity discount
+     *
+     * In case the quantity equals to already existing {@link SpecialPriceItem}, that discounted price is overwritten.
+     *
      * @param SpecialPriceItem $specialPrice
      * @return void
      */
@@ -30,6 +38,8 @@ class PriceItem {
     }
 
     /**
+     * Price for given quantity
+     *
      * @param int $quantity
      * @return float
      */
@@ -54,6 +64,8 @@ class PriceItem {
     }
 
     /**
+     * Deletes all quantity discounts
+     *
      * @return void
      */
     final public function clearSpecialPrices(): void

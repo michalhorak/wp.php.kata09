@@ -12,18 +12,11 @@ class PriceItemTest extends TestCase {
     {
         $item = new PriceItem("A", new UnitPriceItem("A", 41.8));
         self::assertEquals("A", $item->name);
+        self::assertEquals(41.8, $item->unitPrice->price);
         $this->expectException(\Error::class);
         $item->name = "B";
         $this->expectException(\Error::class);
         $item->unitPrice = new UnitPriceItem("B", 41.9);
-    }
-
-    final public function test__setUnitPrice(): void
-    {
-        $item = new PriceItem("A", new UnitPriceItem("A", 41.8));
-        self::assertEquals("A", $item->name);
-        self::assertEquals(41.8, $item->unitPrice->price);
-
     }
 
     final public function test__setSpecialPrice(): void

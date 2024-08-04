@@ -21,10 +21,7 @@ class SpecialPriceItemTest extends TestCase {
         $item->quantity = 105;
         $this->expectException(\Error::class);
         $item->price = 14;
-    }
 
-    final public function test__construct_error(): void
-    {
         $this->expectException(SpecialPriceItemQuantityException::class);
         $this->expectExceptionMessage("quantity must be greater than 0");
         $item = new SpecialPriceItem("A", 0, 107.3);

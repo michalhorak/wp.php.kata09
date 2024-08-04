@@ -37,6 +37,11 @@ class CheckOut implements ICheckOut
     }
 
     /**
+     * Property accessor
+     *
+     * - {@link CheckOut::total()} when "total"
+     * - otherwise null
+     *
      * @param string $propertyName
      * @return mixed
      */
@@ -51,6 +56,17 @@ class CheckOut implements ICheckOut
 
     /**
      * @inheritDoc
+     *
+     * @example
+     * // unit price 20 for 'C'
+     * Checkout::new([
+     *     "C" => 20,
+     * ])
+     *
+     * // unit price 20 for 'C', discounted price 15 for 17 and more items of 'C'
+     * Checkout::new([
+     *     "C" => [20, "17 for 15"]
+     * ])
      */
     public static function new(array $rules): ICheckOut
     {

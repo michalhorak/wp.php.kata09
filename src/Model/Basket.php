@@ -13,6 +13,8 @@ class Basket {
     public array $items = [];
 
     /**
+     * Total price of products in the basket
+     *
      * @param PriceList $priceList
      * @return float
      */
@@ -26,6 +28,8 @@ class Basket {
     }
 
     /**
+     * Adds or overwrites product of given name from basket
+     *
      * @param BasketItem $item
      * @return void
      */
@@ -35,6 +39,8 @@ class Basket {
     }
 
     /**
+     * Adds product to basket (when not yet present), or raises the quantity
+     *
      * @param string $name
      * @param int $quantity
      * @return void
@@ -49,6 +55,8 @@ class Basket {
     }
 
     /**
+     * Removes product of given name from basket
+     *
      * @param BasketItem $item
      * @return void
      */

@@ -13,6 +13,8 @@ class PriceList {
     public array $prices = [];
 
     /**
+     * Price of given basket-item according to this price-list
+     *
      * @param BasketItem $basketItem
      * @return float
      */
@@ -25,6 +27,8 @@ class PriceList {
     }
 
     /**
+     * Adds or overwrites price item for given product name
+     *
      * @param PriceItem $priceItem
      * @return void
      */
@@ -34,6 +38,8 @@ class PriceList {
     }
 
     /**
+     * Removes price item for given product name
+     *
      * @param string $name
      * @return void
      */
