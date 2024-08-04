@@ -5,7 +5,6 @@ namespace App\Tests\Model;
 use App\Model\BasketItem;
 use App\Model\PriceItem;
 use App\Model\PriceList;
-use App\Model\PriceListPriceException;
 use App\Model\UnitPriceItem;
 use PHPUnit\Framework\TestCase;
 
@@ -49,7 +48,7 @@ class PriceListTest extends TestCase {
         $price = $list->price($basketItem);
         self::assertEquals(101.5, $price);
 
-        $this->expectException(PriceListPriceException::class);
         $price2 = $list->price($basketItem2);
+        self::assertEquals(0, $price2);
     }
 }

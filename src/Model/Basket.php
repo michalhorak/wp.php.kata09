@@ -15,19 +15,27 @@ class Basket {
         foreach ($this->items as $item) {
             $price += $priceList->price($item);
         }
-        return $price;
+        return round($price, 2);
     }
 
-    final public function addItem(BasketItem $item): void
+    final public function setItem(BasketItem $item): void
     {
-        $this->items[] = $item;
+        $this->items[$item->name] = $item;
+    }
+
+    final public function raiseItemQuantity(string $name, int $quantity): void
+    {
+        if (!array_key_exists($name, $this->items)) {
+            $this->setItem(new BasketItem($name, $quantity));
+        } else {
+            $this->items[$name]->raiseQuantity($quantity);
+        }
     }
 
     final public function removeItem(BasketItem $item): void
     {
-        $index = array_search($item, $this->items, true);
-        if ($index !== false) {
-            unset($this->items[$index]);
+        if (array_key_exists($item->name, $this->items)) {
+            unset($this->items[$item->name]);
         }
     }
 

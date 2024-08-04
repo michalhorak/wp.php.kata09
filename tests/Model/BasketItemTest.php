@@ -11,10 +11,8 @@ class BasketItemTest extends TestCase {
     {
         $item = new BasketItem("A", 50);
         self::assertEquals("A", $item->name);
-        self::assertEquals(50, $item->quantity);
+        self::assertEquals(50, $item->getQuantity());
         $this->expectException(\Error::class);
         $item->name = "B";
-        $this->expectException(\Error::class);
-        $item->quantity = 105;
     }
 }

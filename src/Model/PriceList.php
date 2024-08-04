@@ -12,10 +12,9 @@ class PriceList {
     final public function price(BasketItem $basketItem): float
     {
         if (array_key_exists($basketItem->name, $this->prices)) {
-            return $this->prices[$basketItem->name]->getPrice($basketItem->quantity);
+            return $this->prices[$basketItem->name]->getPrice($basketItem->getQuantity());
         }
-
-        throw new PriceListPriceException("Price-list item '{$basketItem->name}' does not exist.");
+        return 0;
     }
 
     final public function setPriceItem(PriceItem $priceItem): void
