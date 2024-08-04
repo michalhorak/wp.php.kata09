@@ -1,0 +1,22 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "The ${{ github.repository }} repository has been cloned to the runner instance."
+      - uses: php-actions/composer@v6
+      - run: echo "Dependencies have been installed"
+      - uses: php-actions/composer@v6
+        with:
+          command: check-platform-reqs
+      - run: echo "Platform requirements have been checked"
+      - uses: php-actions/phpstan@v3
+      - run: vendor/bin/phpunit --coverage-text
+        env:
+          XDEBUG_MODE: coverage
+
