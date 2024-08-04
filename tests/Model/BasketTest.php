@@ -11,14 +11,13 @@ use PHPUnit\Framework\TestCase;
 
 class BasketTest extends TestCase {
 
-    final public function testTotalPrice(): void
+    final public function test__totalPrice(): void
     {
-        $priceItem = new PriceItem("D");
-        $priceItem->setUnitPrice(new UnitPriceItem("D", 14.5));
+        $priceItem = new PriceItem("D", new UnitPriceItem("D", 14.5));
         $basketItem = new BasketItem("D", 7);
 
         $list = new PriceList();
-        $list->setPrice($priceItem);
+        $list->setPriceItem($priceItem);
 
         $basket = new Basket();
         $basket->addItem($basketItem);

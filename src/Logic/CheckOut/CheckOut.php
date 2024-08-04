@@ -19,7 +19,7 @@ class CheckOut implements ICheckOut
     private function itemPrice(BasketItem $item): float
     {
         if (!array_key_exists($item->name, $this->rules)) {
-            throw new \Error("No pricing rule for item {${$item->name}}");
+            throw new \OutOfBoundsException("No pricing rule for item {${$item->name}}");
         }
 
         return $this->rules[$item->name][0] * $item->quantity;

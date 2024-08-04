@@ -2,6 +2,8 @@
 
 namespace App\Tests\Model;
 
+use App\Model\SpecialPriceItemQuantityException;
+use App\Model\SpecialPriceItemPriceException;
 use PHPUnit\Framework\TestCase;
 use App\Model\SpecialPriceItem;
 
@@ -19,6 +21,24 @@ class SpecialPriceItemTest extends TestCase {
         $item->quantity = 105;
         $this->expectException(\Error::class);
         $item->price = 14;
+    }
 
+    final public function test__construct_error(): void
+    {
+        $this->expectException(SpecialPriceItemQuantityException::class);
+        $this->expectExceptionMessage("quantity must be greater than 0");
+        $item = new SpecialPriceItem("A", 0, 107.3);
+
+        $this->expectException(SpecialPriceItemQuantityException::class);
+        $this->expectExceptionMessage("quantity must be greater than 0");
+        $item = new SpecialPriceItem("A", -4, 107.3);
+
+        $this->expectException(SpecialPriceItemPriceException::class);
+        $this->expectExceptionMessage("price must be greater than 0");
+        $item = new SpecialPriceItem("A", 6, -107.3);
+
+        $this->expectException(SpecialPriceItemPriceException::class);
+        $this->expectExceptionMessage("price must be greater than 0");
+        $item = new SpecialPriceItem("A", 4, 0);
     }
 }
